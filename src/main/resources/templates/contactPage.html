@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Contact Page</title>
+</head>
+<body><h3> Adding a new contact</h3>
+
+<!--<form action="/saveCommodity" method="post">-->
+
+
+    <!--<input type="text" name="name" placeholder="name" />-->
+
+    <!--<input type="email" name="email" placeholder="email"/>-->
+
+    <!--<input type="text" name="price" placeholder="price"/>-->
+
+    <!--<input type="submit" name="" placeholder="" value="touch me"/>-->
+
+<!--</form>-->
+
+<div class="insert">
+
+    <input id="name" placeholder="" value="name of contact"/>
+    <input id="email" placeholder="" value="email of contact"/>
+    <button id="btn">save</button>
+
+</div>
+
+<div><button id="btn1">Show all Contacts </button></div>
+<div class="target">The list of Contacts</div>
+
+<script>
+    $('#btn').click(function () {
+
+
+        var $name = $('#name').val();
+        var $email = $('#email').val();
+        console.log($name, " ", $email);
+        let contact = {name:$name, email:$email};
+        //  it works with rest controllers and it does not need to restart the whole page
+        $.ajax({
+            url:'/saveContact',
+            type:'POST',
+            data:JSON.stringify(contact),
+            contentType:'application/json',
+        });
+    });
+
+    $('#btn1').click(function (){
+       $('.target').empty();
+        $.ajax({
+            url:'/showContact',
+            type:'GET',
+            //data:JSON.stringify(contact),
+            contentType:'application/json',
+            // the following takes info from controller, results is an arbitrary name
+            success: function (results) {
+                console.log(results);
+                for(const contact of results){
+                    let data = `${contact.id} ${'.'} ${contact.name} ${', '} ${contact.email}`;
+                    let $div = $('<div/>', {class: 'xxx', text: data});
+                    $('.target').append($div);
+                }
+            }
+        });
+    });
+
+    </script>
+
+</body>
+</html>

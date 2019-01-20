@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>User Page</title>
+</head>
+<body>
+<h3> Addig a new user </h3>
+
+
+<h3> Registration  a new USER </h3>
+<form th:action="@{/saveUser}" method="post">
+    <p>Set the name of  a user:</p>
+    <input type="" name="username" placeholder="username"/>
+    <p>Set the password:</p>
+    <input type="password" name="password" placeholder="password"/>
+    <input type="submit" value="go!"/>
+</form>
+
+<form th:action="@{/getToLoginPage}" method="get">
+
+    <div><input type="submit" value="Get back to login page"/></div>
+</form>
+
+
+<!--<script>-->
+    <!--$('#btn').click(function () {-->
+
+
+        <!--var $username = $('#username').val();-->
+        <!--var $password = $('#password').val();-->
+        <!--console.log($username, " ", $password);-->
+        <!--// all fields must have their unique names!-->
+        <!--let user = {username:$username, password:$password};-->
+        <!--//  it works with rest controllers and it does not need to restart the whole page-->
+        <!--$.ajax({-->
+            <!--url:'/saveUser',-->
+            <!--type:'POST',-->
+            <!--data:JSON.stringify(user),-->
+            <!--contentType:'application/json',-->
+        <!--});-->
+    <!--});-->
+
+
+<!--</script>-->
+
+</body>
+</html>

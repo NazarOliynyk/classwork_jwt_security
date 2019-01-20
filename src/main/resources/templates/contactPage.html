@@ -7,23 +7,16 @@
 </head>
 <body><h3> Adding a new contact</h3>
 
-<!--<form action="/saveCommodity" method="post">-->
-
-
-    <!--<input type="text" name="name" placeholder="name" />-->
-
-    <!--<input type="email" name="email" placeholder="email"/>-->
-
-    <!--<input type="text" name="price" placeholder="price"/>-->
-
-    <!--<input type="submit" name="" placeholder="" value="touch me"/>-->
-
-<!--</form>-->
-
 <div class="insert">
 
-    <input id="name" placeholder="" value="name of contact"/>
-    <input id="email" placeholder="" value="email of contact"/>
+    <p>Set the name of a contact:</p>
+
+    <input id="name" type="text" placeholder="" />
+
+    <p>Set the email of a contact:</p>
+
+    <input id="email" type="email" placeholder="" />
+
     <button id="btn">save</button>
 
 </div>
@@ -49,7 +42,7 @@
     });
 
     $('#btn1').click(function (){
-       $('.target').empty();
+        $('.target').empty();
         $.ajax({
             url:'/showContact',
             type:'GET',
@@ -67,7 +60,7 @@
         });
     });
 
-    </script>
+</script>
 
 </body>
 </html>
